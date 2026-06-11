@@ -4,15 +4,15 @@
 # Operator: Campbell; Bandy (Lynn) absolute
 # ==============================================================================
 
-set -e # Exit immediately if any segment returns an error
+set -e # Terminate immediately on any unexpected component failure
 
 echo "[*] RUNNING INTEGRATED CIVICADVOCATE.OS FREQUENCY PROTOCOL"
 echo "------------------------------------------------------------"
 
-# 1. Probe the remote network interfaces
+# 1. Probe remote system network interfaces
 python agency_engagement.py
 
-# 2. Extract structured data structures via deep bypass
+# 2. Extract structured data frames via direct backend query
 python payload_extractor.py
 
 # 3. Parse and cryptographically seal records
@@ -24,7 +24,10 @@ python rrc_production_audit.py
 # 5. Consolidate logs into the active manifest with deduplication
 python generate_manifest.py
 
-# 6. Archive to cold storage with detached SHA-512 checks
+# 6. Compile evidentiary anchors into the Federal Strike Package payload
+python generate_strike_package.py
+
+# 7. Archive system state to cold storage with detached integrity checks
 python archive_manifest.py
 
 echo "------------------------------------------------------------"
