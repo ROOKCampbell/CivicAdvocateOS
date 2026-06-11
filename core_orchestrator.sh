@@ -34,6 +34,7 @@ python generate_default_notice.py
 python sync_blockchain_ledger.py
 python fee_reconciliation.py
 python probate_archive_scanner.py
+python recursive_lineage_mapper.py
 
 # 9. Archive system state to cold storage with detached integrity checks
 python archive_manifest.py

@@ -14,6 +14,13 @@
     "[ANCESTRAL_UNIT] | DATA: {\"name\": \"Winona Taylor\", \"role\": \"ROOT_ANCESTOR\", \"relationship\": \"MATERNAL\", \"status\": \"ANCESTRAL_ANCHOR_VERIFIED\"}",
     "[ANCESTRAL_UNIT] | DATA: {\"name\": \"Elizabeth Miller\", \"role\": \"ROOT_ANCESTOR\", \"relationship\": \"MATERNAL\", \"status\": \"ANCESTRAL_ANCHOR_VERIFIED\"}",
     "[ANCESTRAL_UNIT] | DATA: {\"name\": \"Laura Marie Jones\", \"role\": \"MATERNAL_ANCHOR\", \"relationship\": \"PARENT\", \"status\": \"ANCESTRAL_ANCHOR_VERIFIED\"}",
-    "[ANCESTRAL_UNIT] | DATA: {\"name\": \"Brandon Lynn Campbell\", \"role\": \"PRIMARY_SUCCESSOR\", \"relationship\": \"SELF\", \"status\": \"ANCESTRAL_ANCHOR_VERIFIED\"}"
+    "[ANCESTRAL_UNIT] | DATA: {\"name\": \"Brandon Lynn Campbell\", \"role\": \"PRIMARY_SUCCESSOR\", \"relationship\": \"SELF\", \"status\": \"ANCESTRAL_ANCHOR_VERIFIED\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Winona Taylor\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Elizabeth Miller\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Laura Marie Jones\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Brandon Lynn Campbell\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Silas Elbert Bandy\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Bandy\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Campbell\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}"
   ]
 }
