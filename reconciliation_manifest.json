@@ -22,5 +22,26 @@
     "[LINEAGE_VECTOR] | DATA: {\"name\": \"Silas Elbert Bandy\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}",
     "[LINEAGE_VECTOR] | DATA: {\"name\": \"Bandy\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}",
     "[LINEAGE_VECTOR] | DATA: {\"name\": \"Campbell\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}"
-  ]
+  ],
+  "ancestral_tree": {
+    "root": "Ancestral Lineage",
+    "nodes": {
+      "Campbell": [
+        "Brandon Lynn Campbell"
+      ],
+      "Bandy": [
+        "Silas Elbert Bandy"
+      ],
+      "Taylor": [
+        "Winona Taylor"
+      ],
+      "Miller": [
+        "Elizabeth Miller"
+      ],
+      "Jones": [
+        "Laura Marie Jones"
+      ]
+    },
+    "status": "FORENSIC_VECTOR_SEALED"
+  }
 }
