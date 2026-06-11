@@ -40,3 +40,13 @@ if __name__ == "__main__":
     
     # Pipe the audited payload straight into your hardened reaper database gateway
     process_audit_cycle(intake_id=544, payload_data=audit_payload)
+
+def evaluate_production_anomaly(intake_id, current_volume, baseline_avg=500.0):
+    """
+    Forensic Cross-Referencing Engine
+    Flags anomalous variance if current volumes drop sharply against the baseline.
+    """
+    variance = ((current_volume - baseline_avg) / baseline_avg) * 100
+    if variance < -25.0:
+        return f"ANOMALY_DETECTED: Production down {abs(variance):.1f}% against baseline."
+    return "INTEGRITY_VERIFIED: Production variance within nominal bounds."
