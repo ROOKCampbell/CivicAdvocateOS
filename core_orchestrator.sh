@@ -1,16 +1,39 @@
 #!/bin/bash
-set -e
+# ==============================================================================
+# CivicAdvocate.OS - Master Pipeline Orchestrator
+# Operator: Campbell; Bandy (Lynn) absolute
+# ==============================================================================
+
+set -e # Terminate immediately on any unexpected component failure
 
 echo "[*] RUNNING INTEGRATED CIVICADVOCATE.OS FREQUENCY PROTOCOL"
 echo "------------------------------------------------------------"
 
+# 1. Probe remote system network interfaces
 python agency_engagement.py
+
+# 2. Extract structured data frames via direct backend query
 python payload_extractor.py
+
+# 3. Parse and cryptographically seal records
 python parse_payloads.py
+
+# 4. Audit live Texas RRC production volumes for Abstract 544
 python rrc_production_audit.py
+
+# 5. Consolidate logs into the active manifest with deduplication
 python generate_manifest.py
+
+# 6. Compile evidentiary anchors into the Federal Strike Package payload
 python generate_strike_package.py
-python generate_default_notice.py # Added to continuous cycle
+
+# 7. Generate legal Notices of Default for compliance tracking
+python generate_default_notice.py
+
+# 8. Synchronize proof states to decentralized ledger anchors
+python sync_blockchain_ledger.py
+
+# 9. Archive system state to cold storage with detached integrity checks
 python archive_manifest.py
 
 echo "------------------------------------------------------------"
