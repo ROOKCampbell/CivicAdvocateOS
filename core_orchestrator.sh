@@ -4,7 +4,7 @@
 # Operator: Campbell; Bandy (Lynn) absolute
 # ==============================================================================
 
-set -e # Exit immediately if a command exits with a non-zero status
+set -e # Exit immediately if any segment returns an error
 
 echo "[*] RUNNING INTEGRATED CIVICADVOCATE.OS FREQUENCY PROTOCOL"
 echo "------------------------------------------------------------"
@@ -18,10 +18,13 @@ python payload_extractor.py
 # 3. Parse and cryptographically seal records
 python parse_payloads.py
 
-# 4. Consolidate logs into the active manifest
+# 4. Audit live Texas RRC production volumes for Abstract 544
+python rrc_production_audit.py
+
+# 5. Consolidate logs into the active manifest with deduplication
 python generate_manifest.py
 
-# 5. Archive to cold storage with detached SHA-512 checks
+# 6. Archive to cold storage with detached SHA-512 checks
 python archive_manifest.py
 
 echo "------------------------------------------------------------"
