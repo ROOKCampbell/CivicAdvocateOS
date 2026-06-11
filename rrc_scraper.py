@@ -22,7 +22,7 @@ def analyze_rrc_commingling(lease_id):
     payload_data = {
         "lease_id": lease_id,
         "survey": "Silas Elbert Bandy - Abstract 544",
-        "timestamp": datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S"),
+        "timestamp": datetime.now().astimezone().strftime("%Y-%m-%d %H:%M:%S"),
         "reported_bbls": reported_volume,
         "allocated_bbls": allocated_volume,
         "variance_detected": variance,

@@ -19,5 +19,5 @@ FINGERPRINT=$(sha512sum "$LEDGER_FILE" | awk '{print $1}')
 
 git add .
 git commit -m "Truth Mandate Ledger Update | Anchor: ${FINGERPRINT:0:16}"
-git push -u origin main --force
+git push origin main
 echo "[+] Ledger pushed to repository with anchor: ${FINGERPRINT:0:16}"

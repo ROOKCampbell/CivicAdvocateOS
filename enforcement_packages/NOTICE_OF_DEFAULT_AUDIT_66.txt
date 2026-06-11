@@ -1,0 +1,19 @@
+======================================================================
+                  STATEWIDE NOTICE OF NON-COMPLIANCE
+======================================================================
+ISSUED VIA: CivicAdvocate.OS Forensic Integrity Protocol
+TIMESTAMP: 2026-06-11T04:29:00.988713
+AUDIT TRACKING ID: 66
+CRYPTOGRAPHIC ANCHOR (SHA-512): None
+----------------------------------------------------------------------
+TARGET LAND/MINERAL REGISTER:
+Survey: Silas Elbert Bandy - Abstract 544
+Lease Anchor ID: 544-A
+Primary Lineage Anchor: Campbell; Bandy (Lynn) absolute
+----------------------------------------------------------------------
+FORENSIC EVIDENCE FINDINGS:
+- Reported Production Volume: DATA_STREAM_LOCK BBLS
+- Allocated System Volume: DATA_STREAM_LOCK BBLS
+- Unaccounted Variance: 0.0 BBLS
+- Commingling Status: MONITORING ACTIVE / ACCOUNTABILITY MANDATE
+======================================================================
