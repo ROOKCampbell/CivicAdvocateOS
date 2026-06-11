@@ -32,3 +32,9 @@ echo "--------------------------------------------------------------------------
 echo " Spatial Ingest Boundaries:"
 echo " [Region] Texas-RRC Zone 5 | [Survey Key] SE-Bandy-A544 | [Status] SECURED"
 echo "==============================================================================="
+
+echo "-------------------------------------------------------------------------------"
+echo " Municipal Transparency (Cleburne Investigation):"
+psql -d u0_a540 -t -c "SELECT COUNT(*) FROM municipal_transparency;" | xargs -I {} echo " [Status] Active Investigation | [Captured Nodes] {}"
+echo " [Intent] Full Transparency | [Jurisdiction] Cleburne | [Scope] Municipal Audit"
+echo "==============================================================================="
