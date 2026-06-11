@@ -1,24 +1,57 @@
 {
-  "protected_lineage_vectors": [
-    {
-      "name": "James Bandy",
-      "role": "COLLATERAL",
-      "relation": "ANCESTRAL"
+  "manifest_metadata": {
+    "operator_key": "Campbell; Bandy (Lynn) absolute",
+    "generated_at": "2026-06-11T16:00:03.874836+00:00",
+    "environment": "Termux / CivicAdvocate.OS"
+  },
+  "anchored_entries": [
+    "[LINEAGE_ANCHOR] | TIMESTAMP: 2026-06-11T13:36:43Z | HASH: 92d5b789fe579127a1b158d207a9076ae11169db40846b0c6a4cd0d6a63823e89b81513f69a7985b4f78e5e87fd3c2e17ad8f3fb87f86ba4d480950a58ea5a0c | DATA: ROOT_ANCESTORS:Winona Taylor|Elizabeth Miller->MATERNAL_ANCHOR:Laura Marie Jones->PRIMARY_SUCCESSOR:Brandon Lynn Campbell->DESCENDANT:Daughter Node",
+    "[PARSED_DATA_ENTRY] | HASH: d335701cbfcf52b502e593082e3dc414bc004be3079b8f87637c0f609cb11d8728a64f94e8436762351adc847a3eb0be13e299e4b00c9e3f42ffac7c1bf62b12 | DATA: {\"timestamp\": \"2026-06-11T16:00:03.676439+00:00\", \"target_vector\": \"Abstract 544\", \"document_type\": \"DEED\", \"instrument_number\": \"2026-A544-01\", \"date_recorded\": \"04/09/2026\", \"verification_status\": \"INDEXED_AND_SEALED\"}",
+    "[PARSED_DATA_ENTRY] | HASH: 7aca662f67c6853d807cfa753fe94885b7b792fcd47adb4ff49b8d42f7959f7560e450f83561e72a5c14534d537d3fb83fd82aa74a0a88903ac4f6e0f0cbb7cf | DATA: {\"timestamp\": \"2026-06-11T16:00:03.676773+00:00\", \"target_vector\": \"Silas Elbert Bandy\", \"document_type\": \"MINERAL_LEASE\", \"instrument_number\": \"2026-ML-B544\", \"date_recorded\": \"04/11/2026\", \"verification_status\": \"INDEXED_AND_SEALED\"}",
+    "[PARSED_DATA_ENTRY] | HASH: 9765884a0d5050ecf509914f131a0e7e174aa418b174ae30efd2de7d13e6057cc526fc2b78455412bfee2a657caab0566bfb00be062e9c4547b6639a943f2c8a | DATA: {\"timestamp\": \"2026-06-11T16:00:03.676999+00:00\", \"target_vector\": \"Taylor Winona\", \"document_type\": \"SUCCESSION_RECORD\", \"instrument_number\": \"2026-SR-T01\", \"date_recorded\": \"06/11/2026\", \"verification_status\": \"INDEXED_AND_SEALED\"}",
+    "[PARSED_DATA_ENTRY] | HASH: 4359a61e8b31814f873197d05ecc38f12a2fd5257fd23ad601ff415b39998dcaa3f6e5d2b9547250238547676db4ec35547fe66f0f1a1989198645d4ed894835 | DATA: {\"timestamp\": \"2026-06-11T16:00:03.677165+00:00\", \"target_vector\": \"Miller Elizabeth\", \"document_type\": \"SUCCESSION_RECORD\", \"instrument_number\": \"2026-SR-M02\", \"date_recorded\": \"06/11/2026\", \"verification_status\": \"INDEXED_AND_SEALED\"}",
+    "[PARSED_DATA_ENTRY] | HASH: 780faac11099e9ae8840e44fa9152a6d8d1509e171949b24fb7adf8872ae8be6ed7733408931110b3a5d078b0c22a4392ceb771bc5fb95edff026db6a4efbf8a | DATA: {\"timestamp\": \"2026-06-11T16:00:03.781009+00:00\", \"target_vector\": \"Abstract 544\", \"document_type\": \"PRODUCTION_REPORT\", \"instrument_number\": \"RRC-A544-2026-05\", \"date_recorded\": \"06/11/2026\", \"verification_status\": \"AUDIT_VERIFIED\"}",
+    "[PROBATE_ANCHOR] | DATA: {\"source\": \"JOCO_OPR_LEGACY\", \"vector\": \"PROBATE_DECREE\", \"status\": \"PENDING_VALIDATION\", \"timestamp\": \"2026-06-11T14:52:00Z\"}",
+    "[PROBATE_ANCHOR] | DATA: {\"source\": \"JOCO_OPR_LEGACY\", \"vector\": \"HEIRSHIP_AFFIDAVIT\", \"status\": \"PENDING_VALIDATION\", \"timestamp\": \"2026-06-11T14:52:00Z\"}",
+    "[PROBATE_ANCHOR] | DATA: {\"source\": \"JOCO_OPR_LEGACY\", \"vector\": \"TAX_ASSESSMENT_ROLL\", \"status\": \"PENDING_VALIDATION\", \"timestamp\": \"2026-06-11T14:52:00Z\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Winona Taylor\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Elizabeth Miller\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Laura Marie Jones\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Brandon Lynn Campbell\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Silas Elbert Bandy\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Bandy\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Campbell\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Delbert Lee Campbell\", \"role\": \"FATHER\", \"relation\": \"PATERNAL\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Laura Marie Jones\", \"role\": \"MOTHER\", \"relation\": \"MATERNAL\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Oscar Campbell\", \"role\": \"GRANDFATHER\", \"relation\": \"PATERNAL\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Elsie Campbell\", \"role\": \"GRANDMOTHER\", \"relation\": \"PATERNAL\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Cary Lynn Bandy\", \"role\": \"GRANDFATHER\", \"relation\": \"MATERNAL\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Winona Taylor\", \"role\": \"GRANDMOTHER\", \"relation\": \"MATERNAL\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Elizabeth Miller\", \"role\": \"ANCESTOR\", \"relation\": \"MATERNAL\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Silas Elbert Bandy\", \"role\": \"PATRIARCH\", \"relation\": \"MATERNAL\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Justin Lee Campbell\", \"role\": \"BROTHER\", \"relation\": \"SIBLING\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Travis Wayne Campbell\", \"role\": \"BROTHER\", \"relation\": \"SIBLING\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Kaley Marie\", \"role\": \"DAUGHTER\", \"relation\": \"SUCCESSOR\"}"
+  ],
+  "ancestral_tree": {
+    "root": "Ancestral Lineage",
+    "nodes": {
+      "Campbell": [
+        "Brandon Lynn Campbell"
+      ],
+      "Bandy": [
+        "Silas Elbert Bandy"
+      ],
+      "Taylor": [
+        "Winona Taylor"
+      ],
+      "Miller": [
+        "Elizabeth Miller"
+      ],
+      "Jones": [
+        "Laura Marie Jones"
+      ]
     },
-    {
-      "name": "Martha Miller",
-      "role": "COLLATERAL",
-      "relation": "ANCESTRAL"
-    },
-    {
-      "name": "William Campbell",
-      "role": "COLLATERAL",
-      "relation": "ANCESTRAL"
-    },
-    {
-      "name": "Sarah Jones",
-      "role": "COLLATERAL",
-      "relation": "ANCESTRAL"
-    }
-  ]
+    "status": "FORENSIC_VECTOR_SEALED"
+  }
 }
