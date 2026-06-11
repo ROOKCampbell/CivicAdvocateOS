@@ -1,12 +1,15 @@
 {
-  "system_identity": "Campbell; Bandy (Lynn) absolute",
-  "last_compiled": "2026-06-11T14:28:01.132016+00:00",
-  "non_cleburne_guard": "ACTIVE",
+  "manifest_metadata": {
+    "operator_key": "Campbell; Bandy (Lynn) absolute",
+    "generated_at": "2026-06-11T15:00:03.684036+00:00",
+    "environment": "Termux / CivicAdvocate.OS"
+  },
   "anchored_entries": [
-    "[PARSED_DATA_ENTRY] | DATA: {\"target_vector\": \"Abstract 544\", \"document_type\": \"DEED\", \"instrument_number\": \"2026-A544-01\", \"verification_status\": \"INDEXED_AND_SEALED\"}",
-    "[PARSED_DATA_ENTRY] | DATA: {\"target_vector\": \"Silas Elbert Bandy\", \"document_type\": \"MINERAL_LEASE\", \"instrument_number\": \"2026-ML-B544\", \"verification_status\": \"INDEXED_AND_SEALED\"}",
-    "[PARSED_DATA_ENTRY] | DATA: {\"target_vector\": \"Taylor Winona\", \"document_type\": \"SUCCESSION_RECORD\", \"instrument_number\": \"2026-SR-T01\", \"verification_status\": \"INDEXED_AND_SEALED\"}",
-    "[PARSED_DATA_ENTRY] | DATA: {\"target_vector\": \"Miller Elizabeth\", \"document_type\": \"SUCCESSION_RECORD\", \"instrument_number\": \"2026-SR-M02\", \"verification_status\": \"INDEXED_AND_SEALED\"}",
-    "[PARSED_DATA_ENTRY] | DATA: {\"target_vector\": \"Abstract 544\", \"document_type\": \"PRODUCTION_REPORT\", \"instrument_number\": \"RRC-A544-2026-05\", \"verification_status\": \"AUDIT_VERIFIED\"}"
+    "[LINEAGE_ANCHOR] | TIMESTAMP: 2026-06-11T13:36:43Z | HASH: 92d5b789fe579127a1b158d207a9076ae11169db40846b0c6a4cd0d6a63823e89b81513f69a7985b4f78e5e87fd3c2e17ad8f3fb87f86ba4d480950a58ea5a0c | DATA: ROOT_ANCESTORS:Winona Taylor|Elizabeth Miller->MATERNAL_ANCHOR:Laura Marie Jones->PRIMARY_SUCCESSOR:Brandon Lynn Campbell->DESCENDANT:Daughter Node",
+    "[PARSED_DATA_ENTRY] | HASH: f5b51fb7c84f85cf66ccc3b09e34352e87a1e5eb31d5e9d8da1b60cf91648cda09b2950ffc330baaf6bdec8c0e1b3545134e5c79ae583d915fe41323d401fc29 | DATA: {\"timestamp\": \"2026-06-11T15:00:03.498581+00:00\", \"target_vector\": \"Abstract 544\", \"document_type\": \"DEED\", \"instrument_number\": \"2026-A544-01\", \"date_recorded\": \"04/09/2026\", \"verification_status\": \"INDEXED_AND_SEALED\"}",
+    "[PARSED_DATA_ENTRY] | HASH: 78c9cd8ac1335e59a442448690a59c2b6b8c9c401daa58317e8a154c550227772551bd70abda04f3ed45a6bc192d125191a84eb473274d9aadd846d1c6f39b69 | DATA: {\"timestamp\": \"2026-06-11T15:00:03.498850+00:00\", \"target_vector\": \"Silas Elbert Bandy\", \"document_type\": \"MINERAL_LEASE\", \"instrument_number\": \"2026-ML-B544\", \"date_recorded\": \"04/11/2026\", \"verification_status\": \"INDEXED_AND_SEALED\"}",
+    "[PARSED_DATA_ENTRY] | HASH: 593ac988726292678e5aa666b24d0311d8ee6561b4668c55bb30fdc75d46524f6b179b74c509ff9f77d5b601b5bf56871fc5f2f67910b0e986c5682c48d8454f | DATA: {\"timestamp\": \"2026-06-11T15:00:03.499058+00:00\", \"target_vector\": \"Taylor Winona\", \"document_type\": \"SUCCESSION_RECORD\", \"instrument_number\": \"2026-SR-T01\", \"date_recorded\": \"06/11/2026\", \"verification_status\": \"INDEXED_AND_SEALED\"}",
+    "[PARSED_DATA_ENTRY] | HASH: e57b95c9452a7d92e5efdad8be4f310892cba0b8bccd213026cd4760eecc295097592a967bf03d70710a50dda56046c1c996a79175b4b74080c49f45d498dc13 | DATA: {\"timestamp\": \"2026-06-11T15:00:03.499194+00:00\", \"target_vector\": \"Miller Elizabeth\", \"document_type\": \"SUCCESSION_RECORD\", \"instrument_number\": \"2026-SR-M02\", \"date_recorded\": \"06/11/2026\", \"verification_status\": \"INDEXED_AND_SEALED\"}",
+    "[PARSED_DATA_ENTRY] | HASH: 4a72c40d9a937220b42846801545e519fc77ca2a2753376f56cce4f5484533a5a346f62b5ae268ae77a6dbea24c836243b89d732c43d4eacb38492187eb3fc54 | DATA: {\"timestamp\": \"2026-06-11T15:00:03.593966+00:00\", \"target_vector\": \"Abstract 544\", \"document_type\": \"PRODUCTION_REPORT\", \"instrument_number\": \"RRC-A544-2026-05\", \"date_recorded\": \"06/11/2026\", \"verification_status\": \"AUDIT_VERIFIED\"}"
   ]
 }
