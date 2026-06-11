@@ -32,6 +32,7 @@ python generate_default_notice.py
 
 # 8. Synchronize proof states to decentralized ledger anchors
 python sync_blockchain_ledger.py
+python fee_reconciliation.py
 
 # 9. Archive system state to cold storage with detached integrity checks
 python archive_manifest.py
