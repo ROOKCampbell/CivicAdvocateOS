@@ -1,0 +1,4 @@
+--- Integrity Report for forensic_ledger.sha512 ---
+[VERIFIED] infrastructure.yaml (Matches anchor from 2026-06-11T07:49:03.841155+00:00)
+
+All systemic records match their anchored cryptographic hashes perfectly.

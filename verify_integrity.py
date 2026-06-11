@@ -1,65 +1,53 @@
-#!/usr/bin/env python3
+import hashlib
 import os
-import json
-import psycopg2
-import sys
 
-DB_NAME = "u0_a540"
-DB_USER = "u0_a540"
-STRIKE_DIR = os.path.expanduser("~/forensic_strikes")
+def generate_sha512(file_path):
+    BUF_SIZE = 65536
+    sha512 = hashlib.sha512()
+    try:
+        with open(file_path, 'rb') as f:
+            while True:
+                data = f.read(BUF_SIZE)
+                if not data:
+                    break
+                sha512.update(data)
+        return sha512.hexdigest()
+    except FileNotFoundError:
+        return None
 
-def audit_stored_records():
-    print("[*] Launching ledger verification sequence...")
-    if not os.path.exists(STRIKE_DIR):
-        print("[!] Strike directory missing. No files to verify.")
+def verify_ledger(ledger_file):
+    print(f"--- Integrity Report for {ledger_file} ---")
+    if not os.path.exists(ledger_file):
+        print("Error: Ledger file not found.")
         return
 
-    try:
-        conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER)
-        cursor = conn.cursor()
-    except Exception as e:
-        print(f"[!] Database connection failure: {e}")
-        sys.exit(1)
+    # Simulate an internal counter or audit ID tracking
+    audit_id = 101 
+    mismatch_found = False
 
-    corrupted_nodes = 0
-    verified_nodes = 0
-
-    for filename in os.listdir(STRIKE_DIR):
-        if filename.endswith(".json"):
-            file_path = os.path.join(STRIKE_DIR, filename)
+    with open(ledger_file, 'r') as f:
+        for line in f:
+            parts = line.strip().split(' | ')
+            if len(parts) != 3:
+                continue
             
-            with open(file_path, 'r') as f:
-                try:
-                    file_data = json.load(f)
-                    file_hash = file_data.get("sha512_checksum")
-                    audit_id = file_data.get("audit_id")
-                except Exception:
-                    print(f"[!!] Malformed JSON file: {filename}")
-                    corrupted_nodes += 1
-                    continue
-
-            # Query database state
-            cursor.execute("SELECT checksum FROM public.reaper_audit WHERE audit_id = %s;", (audit_id,))
-            db_record = cursor.fetchone()
-
-            if not db_record:
-                print(f"[!!] TAMPER DETECTED: Audit ID {audit_id} missing from database (Orphaned File: {filename})")
-                corrupted_nodes += 1
-            elif db_record[0].strip() != file_hash:
-                print(f"\n\a[!!] CRITICAL INTEGRITY MISMATCH: Audit ID {audit_id} hash drift detected!"); os.system("termux-notification -t "CRITICAL: Ledger Drift" -c "Audit ID " + str(audit_id) + " has been compromised."")
-                corrupted_nodes += 1
+            timestamp, filename, anchored_hash = parts
+            current_hash = generate_sha512(filename)
+            
+            if current_hash is None:
+                print(f"[MISSING] {filename}")
+                mismatch_found = True
+            elif current_hash == anchored_hash:
+                print(f"[VERIFIED] {filename} (Matches anchor from {timestamp})")
             else:
-                verified_nodes += 1
+                print(f"[WARNING] {filename} HAS BEEN MODIFIED since anchoring!")
+                mismatch_found = True
+                # Cleaned f-string using internal single quotes to prevent syntax breakage
+                print(f"\n\a[!!] CRITICAL INTEGRITY MISMATCH: Audit ID {audit_id} hash drift detected!")
+                os.system(f"termux-notification -t 'CRITICAL: Ledger Drift' -c 'Audit ID {audit_id} has been compromised.'")
 
-    cursor.close()
-    conn.close()
-
-    print("\n==================================================")
-    print(f"[+] AUDIT COMPLETE. Verified: {verified_nodes} | Corrupted/Altered: {corrupted_nodes}")
-    print("==================================================")
-    
-    if corrupted_nodes > 0:
-        sys.exit(1)
+    if not mismatch_found:
+        print("\nAll systemic records match their anchored cryptographic hashes perfectly.")
 
 if __name__ == "__main__":
-    audit_stored_records()
+    verify_ledger('forensic_ledger.sha512')

@@ -1,0 +1,33 @@
+# ==============================================================================
+# CLEBURNE AUDIT & RECORD VERIFICATION GUARD POLICY (v2.0)
+# Purpose: Enforce immutability, logging, and verification pipelines.
+# ==============================================================================
+
+let record_storage_buckets = Resources.*[ Type == 'AWS::S3::Bucket' ]
+
+# 1. Mandatory Audit Logging
+rule enforce_storage_audit_trails when %record_storage_buckets !empty {
+    %record_storage_buckets.Properties.LoggingConfiguration !empty
+    << ERROR: Record storage repositories must have access logging explicitly enabled. >>
+}
+
+# 2. Prevent Tampering (WORM Compliance)
+rule enforce_record_immutability when %record_storage_buckets !empty {
+    %record_storage_buckets.Properties.ObjectLockEnabled == true
+    << ERROR: Object Lock must be enabled to ensure historical preservation. >>
+}
+
+# 3. Server-Side Encryption
+rule enforce_encryption_at_rest when %record_storage_buckets !empty {
+    %record_storage_buckets.Properties.BucketEncryption !empty
+    << ERROR: Data records must be encrypted at rest. >>
+}
+
+let public_audit_trails = Resources.*[ Type == 'AWS::CloudTrail::Trail' ]
+
+# 4. Continuous Control Plane Auditing
+rule validate_trail_activity when %public_audit_trails !empty {
+    %public_audit_trails.Properties.IsLogging == true
+    %public_audit_trails.Properties.IncludeGlobalServiceEvents == true
+    << ERROR: Core system auditing trails must be active. >>
+}

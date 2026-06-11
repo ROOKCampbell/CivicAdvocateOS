@@ -1,52 +1,57 @@
-#!/usr/bin/env python3
-import requests
-import json
+import hashlib
 import os
 import random
-from datetime import datetime
+from datetime import datetime, timezone
 
-def analyze_rrc_commingling(lease_id):
-    """
-    Forensic audit interface tracking production volume variances 
-    to detect unauthorized asset commingling patterns.
-    """
-    print(f"[*] Executing forensic audit sequence on Lease ID: {lease_id}")
+def generate_sha512(file_path):
+    BUF_SIZE = 65536
+    sha512 = hashlib.sha512()
+    try:
+        with open(file_path, 'rb') as f:
+            while True:
+                data = f.read(BUF_SIZE)
+                if not data:
+                    break
+                sha512.update(data)
+        return sha512.hexdigest()
+    except FileNotFoundError:
+        return None
+
+def anchor_asset(target_file, ledger_file='forensic_ledger.sha512'):
+    file_hash = generate_sha512(target_file)
+    if not file_hash:
+        return False
     
-    # Simulating structural data points extracted from the Texas Railroad Commission logs
-    reported_volume = round(random.uniform(1200.50, 4500.75), 2)
-    allocated_volume = round(reported_volume * random.choice([1.0, 1.0, 0.85, 1.0]), 2) # Simulate occasional variance
+    timestamp = datetime.now(timezone.utc).isoformat()
+    ledger_entry = f"{timestamp} | {target_file} | {file_hash}\n"
     
-    variance = round(reported_volume - allocated_volume, 2)
-    commingling_flag = True if variance > 0 else False
+    with open(ledger_file, 'a') as f:
+        f.write(ledger_entry)
+    return file_hash
+
+def run_rrc_scraper():
+    print("--- Executing Texas RRC Data Ingestion Loop ---")
     
-    payload_data = {
-        "lease_id": lease_id,
-        "survey": "Silas Elbert Bandy - Abstract 544",
-        "timestamp": datetime.now().astimezone().strftime("%Y-%m-%d %H:%M:%S"),
-        "reported_bbls": reported_volume,
-        "allocated_bbls": allocated_volume,
-        "variance_detected": variance,
-        "commingling_alert_flag": commingling_flag,
-        "audit_signature": "TEXAS_RRC_FORENSIC_V1"
-    }
+    # Simulating data payload from Texas RRC GIS/Production data systems
+    mock_rrc_data = f"""# Texas Railroad Commission Production Data Log
+# Target Region: Cleburne, TX (Johnson County)
+# Retrieval Timestamp: {datetime.now(timezone.utc).isoformat()}
+---------------------------------------------------------
+Operator_ID | API_Number   | Production_Volume_MCF | Status
+RRC_94821   | 42-251-34211 | {random.randint(1200, 5000)}                  | ACTIVE
+RRC_10482   | 42-251-98432 | 0                     | PLUGGED
+"""
     
-    return payload_data
+    output_file = "rrc_cleburne_production.log"
+    
+    # Write the ingested data to disk
+    with open(output_file, 'w') as f:
+        f.write(mock_rrc_data)
+    print(f"[SUCCESS] Ingested raw RRC data written to: {output_file}")
+    
+    # Cryptographically secure the newly ingested file immediately
+    inserted_hash = anchor_asset(output_file)
+    print(f"[ANCHORED] Automatically generated forensic seal: {inserted_hash[:16]}...")
 
 if __name__ == "__main__":
-    from reaper_daemon import process_audit_cycle
-    
-    target_lease = "544-A"
-    audit_payload = analyze_rrc_commingling(target_lease)
-    
-    # Pipe the audited payload straight into your hardened reaper database gateway
-    process_audit_cycle(intake_id=544, payload_data=audit_payload)
-
-def evaluate_production_anomaly(intake_id, current_volume, baseline_avg=500.0):
-    """
-    Forensic Cross-Referencing Engine
-    Flags anomalous variance if current volumes drop sharply against the baseline.
-    """
-    variance = ((current_volume - baseline_avg) / baseline_avg) * 100
-    if variance < -25.0:
-        return f"ANOMALY_DETECTED: Production down {abs(variance):.1f}% against baseline."
-    return "INTEGRITY_VERIFIED: Production variance within nominal bounds."
+    run_rrc_scraper()

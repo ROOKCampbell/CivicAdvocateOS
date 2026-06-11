@@ -1,0 +1,7 @@
+# Texas Railroad Commission Production Data Log
+# Target Region: Cleburne, TX (Johnson County)
+# Retrieval Timestamp: 2026-06-11T07:55:32.992675+00:00
+---------------------------------------------------------
+Operator_ID | API_Number   | Production_Volume_MCF | Status
+RRC_94821   | 42-251-34211 | 4900                  | ACTIVE
+RRC_10482   | 42-251-98432 | 0                     | PLUGGED
