@@ -2,8 +2,10 @@ import http.server
 import socketserver
 import json
 import os
+import sys
 
-PORT = 8080
+START_PORT = 8080
+MAX_PORT_ATTEMPTS = 20
 MANIFEST_FILE = "reconciliation_manifest.json"
 
 class TransparentLedgerHandler(http.server.SimpleHTTPRequestHandler):
@@ -13,7 +15,6 @@ class TransparentLedgerHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Content-type", "text/html")
             self.end_headers()
             
-            # Read current system states
             manifest_status = "DISCONNECTED"
             identity = "UNKNOWN"
             blocks_count = 0
@@ -67,14 +68,26 @@ class TransparentLedgerHandler(http.server.SimpleHTTPRequestHandler):
 
 def run_server():
     socketserver.TCPServer.allow_reuse_address = True
-    with socketserver.TCPServer(("", PORT), TransparentLedgerHandler) as httpd:
-        print(f"[✓] PUBLIC GLASS-BOX LEDGER LIVE ON LOCAL PORT: {PORT}")
-        print(f"[*] Access URL: http://localhost:{PORT}")
-        print("[*] Listening for external auditor verification requests... (Ctrl+C to terminate)")
+    current_port = START_PORT
+    
+    for attempt in range(MAX_PORT_ATTEMPTS):
         try:
-            httpd.serve_forever()
-        except KeyboardInterrupt:
-            print("\n[*] Public server offline. Re-entering active shell environment.")
+            with socketserver.TCPServer(("", current_port), TransparentLedgerHandler) as httpd:
+                print(f"[✓] PUBLIC GLASS-BOX LEDGER LIVE ON LOCAL PORT: {current_port}")
+                print(f"[*] Access URL: http://localhost:{current_port}")
+                print("[*] Listening for external auditor verification requests... (Ctrl+C to terminate)")
+                httpd.serve_forever()
+                return
+        except OSError as e:
+            if e.errno == 98: # Address already in use
+                print(f"[!] Port {current_port} occupied. Incrementing scanning vector...")
+                current_port += 1
+            else:
+                print(f"[!] Unexpected socket failure: {str(e)}")
+                sys.exit(1)
+                
+    print("[!] CRITICAL: No available network sockets found within designated range.")
+    sys.exit(1)
 
 if __name__ == "__main__":
     run_server()
