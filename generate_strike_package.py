@@ -13,7 +13,6 @@ def compile_strike_package():
         with open(MANIFEST_FILE, "r") as f:
             manifest = json.load(f)
             
-        # Structure the referral using standard federal whistleblower/forensic auditing schemas
         strike_package = {
             "submission_metadata": {
                 "referral_type": "FORENSIC_ASSET_COMMINGLING_REPORT",
@@ -28,9 +27,9 @@ def compile_strike_package():
             }
         }
         
-        # Map the sealed ledger blocks directly to the evidentiary payload
+        # Map entries from the manifest into the formal federal structure
         for entry in manifest.get("anchored_entries", []):
-            if "PARSED_DATA_ENTRY" in entry:
+            if "DATA:" in entry:
                 raw_json = entry.split("DATA: ")[1]
                 rec = json.loads(raw_json)
                 
@@ -43,10 +42,17 @@ def compile_strike_package():
                 }
                 strike_package["evidentiary_anchors"]["verified_records"].append(evidence_block)
                 
+        # Generate final system-wide package seal (SHA-512)
+        raw_package = json.dumps(strike_package, sort_keys=True)
+        package_seal = hashlib.sha512(raw_package.encode()).hexdigest()
+        
+        strike_package["submission_metadata"]["package_integrity_seal_sha512"] = package_seal
+        
         with open(PACKAGE_FILE, "w") as out:
             json.dump(strike_package, out, indent=2)
             
         print(f"[✓] REFERRAL MANIFEST COMPILED: '{PACKAGE_FILE}'")
+        print(f"[✓] SYSTEM-WIDE SHA-512 SEAL: {package_seal[:32]}...")
         print(f"[✓] EVIDENCE CHAINS LOCKED FOR FEDERAL SUBMISSION")
         
     except Exception as e:
