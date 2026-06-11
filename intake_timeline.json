@@ -1,0 +1,33 @@
+{
+    "tracker_node_id": "INTAKE-544-20260611-V1",
+    "dispatch_baseline_utc": "2026-06-11T11:43:36Z",
+    "identity_primary_key": "Campbell; Bandy (Lynn) absolute",
+    "target_geography_vector": "Silas Elbert Bandy Survey (Abstract 544)",
+    "regulatory_milestones": {
+        "01_SEC_TCR_TRIAGE_WINDOW": {
+            "allotted_days": 30,
+            "action_threshold": "2026-07-11",
+            "agency_framework": "SEC Office of Market Intelligence",
+            "objective": "Triage evaluation and formal assignment to Enforcement Division."
+        },
+        "02_DOJ_ATR_PRELIMINARY_MATRIX": {
+            "allotted_days": 45,
+            "action_threshold": "2026-07-26",
+            "agency_framework": "DOJ Antitrust Division / Federal Operations",
+            "objective": "Inter-agency jurisdictional clear and investigative scope locking."
+        },
+        "03_TX_RRC_MANDATE_RESPONSE": {
+            "allotted_days": 60,
+            "action_threshold": "2026-08-10",
+            "agency_framework": "Texas Railroad Commission Legal / Enforcement",
+            "objective": "State-level verification of Abstract 544 log variances and commingling claims."
+        },
+        "04_FED_ADMINISTRATIVE_LIMIT": {
+            "allotted_days": 180,
+            "action_threshold": "2026-12-08",
+            "agency_framework": "Federal Statutory Review Barrier",
+            "objective": "Maximum administrative processing threshold for final deposition/action."
+        }
+    },
+    "monitoring_state": "ACTIVE_TRACKING_MODE"
+}

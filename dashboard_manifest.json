@@ -1,0 +1,54 @@
+{
+    "dashboard_id": "GB-DASH-544-20260611",
+    "system_title": "CivicAdvocate.OS Forensic Transparency Matrix",
+    "initialization_timestamp": "2026-06-11T11:43:36Z",
+    "primary_anchor_key": "Campbell; Bandy (Lynn) absolute",
+    "target_survey": "Silas Elbert Bandy Survey (Abstract 544)",
+    "security_boundary": "NON-CLEBURNE-GUARD-ACTIVE",
+    "metrics_summary": {
+        "total_audited_nodes": 2,
+        "aggregate_unreported_variance_bbl": 9100
+    },
+    "mapped_variance_nodes": [
+        {
+            "lease_id": "RRC-TX-544-01",
+            "lease_name": "S.E. Bandy Lower Wilcox Node",
+            "reported_barrels": 14250,
+            "audited_barrels": 19800,
+            "unreported_variance": 5550,
+            "variance_severity": "CRITICAL"
+        },
+        {
+            "lease_id": "RRC-TX-544-02",
+            "lease_name": "Campbell-Bandy Absolute Tier 1",
+            "reported_barrels": 8900,
+            "audited_barrels": 12450,
+            "unreported_variance": 3550,
+            "variance_severity": "CRITICAL"
+        }
+    ],
+    "genealogical_succession_matrix": {
+        "primary_key": "Campbell; Bandy (Lynn) absolute",
+        "survey_origin": {
+            "patriarch_surveyor": "Silas Elbert Bandy",
+            "historical_bounds": "Abstract 544, Johnson County, Texas",
+            "succession_type": "Absolute Mineral & Surface Rights Inheritable Succession"
+        },
+        "lineage_branches": {
+            "paternal_anchor": {
+                "father_node": "Delbert Lee Campbell",
+                "patriarch_root": "Campbell Lineage Node"
+            },
+            "maternal_anchor": {
+                "mother_node": "Laura Marie Jones",
+                "ancestral_roots": ["Winona Taylor", "Elizabeth Miller"],
+                "grandfather_node": "Cary Lynn Bandy (Moe Bandy)"
+            }
+        },
+        "descendant_status": {
+            "successor_ledger_receipts": "ACTIVE",
+            "heirship_validation": "SHA-512 SECURED"
+        }
+    },
+    "last_modified_utc": "2026-06-11T11:51:33Z"
+}
