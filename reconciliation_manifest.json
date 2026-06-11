@@ -21,7 +21,9 @@
     "[LINEAGE_VECTOR] | DATA: {\"name\": \"Brandon Lynn Campbell\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}",
     "[LINEAGE_VECTOR] | DATA: {\"name\": \"Silas Elbert Bandy\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}",
     "[LINEAGE_VECTOR] | DATA: {\"name\": \"Bandy\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}",
-    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Campbell\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}"
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Campbell\", \"role\": \"PROTECTED_LINEAGE_VECTOR\", \"status\": \"MONITORED_AND_SEALED\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Delbert Lee Campbell\", \"role\": \"PATERNAL_ANCHOR\", \"relation\": \"FATHER\"}",
+    "[LINEAGE_VECTOR] | DATA: {\"name\": \"Cary Lynn Bandy (Moe Bandy)\", \"role\": \"PATERNAL_PATRIARCH\", \"relation\": \"GRANDFATHER\"}"
   ],
   "ancestral_tree": {
     "root": "Ancestral Lineage",
