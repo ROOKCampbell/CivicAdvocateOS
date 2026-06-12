@@ -1,0 +1,61 @@
+{
+  "submission_metadata": {
+    "referral_type": "FORENSIC_ASSET_COMMINGLING_REPORT",
+    "compiled_at": "2026-06-11T14:29:06.588578+00:00",
+    "investigator_signature": "Campbell; Bandy (Lynn) absolute",
+    "classification_level": "PROPRIETARY_EVIDENTIARY_RECORD",
+    "package_integrity_seal_sha512": "77d83b223a92130410b105d9d79e187c7dd5044940fbfc93001e98e0d50c5d725b9eaea07beb3c1b9e35925ea4bbdcc83a3833b7ec07a4a4c465274a8a086d5e"
+  },
+  "evidentiary_anchors": {
+    "target_survey": "Silas Elbert Bandy Survey (Abstract 544)",
+    "jurisdiction_exclusion_enforced": "NON_CLEBURNE_GUARD_ACTIVE",
+    "verified_records": [
+      {
+        "vector": "Abstract 544",
+        "instrument_id": "2026-A544-01",
+        "document_class": "DEED",
+        "ledger_verification_status": "INDEXED_AND_SEALED",
+        "integrity_hash": "b8c0f158ee97cc9e913c691453747d60fa60b2403304c07d205b8e88a338c96b"
+      },
+      {
+        "vector": "Silas Elbert Bandy",
+        "instrument_id": "2026-ML-B544",
+        "document_class": "MINERAL_LEASE",
+        "ledger_verification_status": "INDEXED_AND_SEALED",
+        "integrity_hash": "65116600fda2a70e2439a05e532f0dbe78d75ef5e7bb3ba27af9e306bd9aedeb"
+      },
+      {
+        "vector": "Taylor Winona",
+        "instrument_id": "2026-SR-T01",
+        "document_class": "SUCCESSION_RECORD",
+        "ledger_verification_status": "INDEXED_AND_SEALED",
+        "integrity_hash": "5aec68447d9bb34683af85a6c66dab98975cb9c3b85d08ec8f97f7e36285f1e0"
+      },
+      {
+        "vector": "Miller Elizabeth",
+        "instrument_id": "2026-SR-M02",
+        "document_class": "SUCCESSION_RECORD",
+        "ledger_verification_status": "INDEXED_AND_SEALED",
+        "integrity_hash": "954ae6b9ae24d08382b1e0969826dc6c7df2f12f914b06d7a6b68a1bb28276d9"
+      },
+      {
+        "vector": "Abstract 544",
+        "instrument_id": "RRC-A544-2026-05",
+        "document_class": "PRODUCTION_REPORT",
+        "ledger_verification_status": "AUDIT_VERIFIED",
+        "integrity_hash": "94dd5dbd973688a8f3b084a7977da17e0b0343e46b8bd9f1c810c948378f1853"
+      }
+    ]
+  },
+  "billing_ledger": {
+    "current_accruals": [
+      {
+        "timestamp": "2026-06-12T12:00:03.923627",
+        "service": "forensic_audit_service",
+        "fee": 500.0,
+        "status": "ACCRUED"
+      }
+    ],
+    "total_accrued": 500.0
+  }
+}
