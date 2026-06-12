@@ -1,0 +1,59 @@
+{
+    "metadata": {
+        "api": "42-251-34892",
+        "total_extracted_mcf": 3350.75,
+        "anchor_delta": 3350.75,
+        "reconciliation_variance": 0.0,
+        "status": "MATCH_CONFIRMED"
+    },
+    "logs": [
+        {
+            "month": "2008-04",
+            "mcf_extracted": 240.5
+        },
+        {
+            "month": "2008-05",
+            "mcf_extracted": 285.75
+        },
+        {
+            "month": "2008-06",
+            "mcf_extracted": 310.2
+        },
+        {
+            "month": "2008-07",
+            "mcf_extracted": 420.1
+        },
+        {
+            "month": "2008-08",
+            "mcf_extracted": 395.5
+        },
+        {
+            "month": "2008-09",
+            "mcf_extracted": 350.0
+        },
+        {
+            "month": "2008-10",
+            "mcf_extracted": 290.4
+        },
+        {
+            "month": "2008-11",
+            "mcf_extracted": 275.3
+        },
+        {
+            "month": "2008-12",
+            "mcf_extracted": 210.0
+        },
+        {
+            "month": "2009-01",
+            "mcf_extracted": 205.5
+        },
+        {
+            "month": "2009-02",
+            "mcf_extracted": 195.25
+        },
+        {
+            "month": "2009-03",
+            "mcf_extracted": 172.25
+        }
+    ]
+}
