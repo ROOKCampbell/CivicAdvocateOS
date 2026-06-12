@@ -1,0 +1,25 @@
+{
+    "target_abstract": "545",
+    "survey_name": "M.K. & T. RR CO",
+    "county_code": "42-251",
+    "wells_identified": [
+        {
+            "api_number": "42-251-30114",
+            "well_number": "1-H",
+            "lease_name": "Marystown Unit Alpha",
+            "operator_historical": "Legacy Production Corp",
+            "completion_date": "1994-08-14",
+            "producing_formation": "Barnett Shale",
+            "status": "Plugged & Abandoned"
+        },
+        {
+            "api_number": "42-251-34892",
+            "well_number": "4-RE",
+            "lease_name": "Cross-Boundary Offset",
+            "operator_historical": "Apex Energy Partners",
+            "completion_date": "2008-03-22",
+            "producing_formation": "Barnett Shale",
+            "status": "Active / Producing"
+        }
+    ]
+}
