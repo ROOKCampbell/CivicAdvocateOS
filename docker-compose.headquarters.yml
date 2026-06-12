@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  # Core Forensic Engine: Runs the Python audit scripts and ledger parsers
+  forensic_core:
+    image: python:3.11-slim
+    container_name: truth_mandate_core
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    environment:
+      - ENVIRONMENT=HEADQUARTERS
+      - LEAD_PARTNER=BRANDON_LYNN_CAMPBELL
+    command: tail -f /dev/null
+    restart: unless-stopped
+
+  # Automation Engine: Hosts Selenium/Playwright browsers for RRC data mining
+  browser_agent:
+    image: mcr.microsoft.com/playwright:v1.40.0-jammy
+    container_name: HQ_automation_agent
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    restart: unless-stopped
+
+  # Immutable Storage Node: Holds local database logs for Abstract forensic entries
+  audit_database:
+    image: postgres:15-alpine
+    container_name: HQ_audit_ledger
+    environment:
+      - POSTGRES_DB=marystown_genesis
+      - POSTGRES_USER=advocate_admin
+      - POSTGRES_PASSWORD=Set_Secure_HQ_Password_Here
+    volumes:
+      - hq_db_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  hq_db_data:
+    driver: local
