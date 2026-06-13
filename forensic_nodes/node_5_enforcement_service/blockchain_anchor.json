@@ -1,0 +1,7 @@
+{
+  "anchor_type": "ETH_MAINNET_INPUT_DATA",
+  "payload_source": "forensic_nodes/node_4_regulatory_sync/federal_referral_manifest.txt",
+  "root_hash_anchored": "0c26d97d7e9ad0c82cb8aeccd215ddf57019c426c7f7c6cac8279652306b445b3f81224e029b6f37e9b90b8e18a28323766a1aafbada0f979a61d3e31e0646e0",
+  "reconciled_volume": "3350.75 MCF",
+  "blockchain_status": "STAGED_FOR_BROADCAST"
+}
