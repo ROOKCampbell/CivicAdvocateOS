@@ -1,0 +1,19 @@
+{
+  "notification_log": {
+    "timestamp": "2026-06-12T20:06:18Z",
+    "status": "RECORDED",
+    "jurisdiction": "NON-CLEBURNE CONTEXT LOCKED",
+    "delivery_channels": [
+      {"agency": "SECURITIES_AND_EXCHANGE_COMMISSION", "division": "ENFORCEMENT_TCR_SYSTEM"},
+      {"agency": "DEPARTMENT_OF_JUSTICE", "division": "ASSET_FORFEITURE_MANUFACTURING_DISCREPANCIES"}
+    ],
+    "verification_anchors": {
+      "package_hash_source": "forensic_nodes/node_5_enforcement_service/package_fingerprint.sha512",
+      "volumetric_baseline": "3350.75 MCF"
+    },
+    "certificate_of_service": {
+      "notice_origin_date": "2026-04-06",
+      "legal_standing": "ADMISSION_BY_SILENCE_CONFIRMED"
+    }
+  }
+}
