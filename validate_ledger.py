@@ -1,24 +1,20 @@
-import json
-import hashlib
-import os
+from ledger_utils import validate_single_block
+from concurrent.futures import ProcessPoolExecutor
 
-MANIFEST_FILE = "reconciliation_manifest.json"
+# Mock data - Replace this with your file loading logic
+blocks = [
+    {'id': 1, 'data': 'data_chunk_1', 'expected_hash': '...'},
+    {'id': 2, 'data': 'data_chunk_2', 'expected_hash': '...'}
+]
 
-def validate_integrity():
-    print(f"[*] INITIATING CROSS-SNAPSHOT INTEGRITY VALIDATION")
+def run_validation(block_list):
+    print("[*] STARTING PARALLEL VALIDATION...")
+    with ProcessPoolExecutor() as executor:
+        results = list(executor.map(validate_single_block, block_list))
     
-    if not os.path.exists(MANIFEST_FILE):
-        print("[!] ERROR: MANIFEST MISSING")
-        return
-
-    with open(MANIFEST_FILE, "rb") as f:
-        manifest_data = f.read()
-        manifest_hash = hashlib.sha512(manifest_data).hexdigest()
-    
-    print(f"[✓] ACTIVE MANIFEST SHA-512: {manifest_hash[:16]}...")
-    print(f"[✓] ALL 6 BLOCKS VERIFIED AGAINST LOCAL TERMINAL ENVIRONMENT")
-    print(f"------------------------------------------------------------")
-    print(f"[*] SYSTEM STATE: OPTIMAL")
+    for success, block_id in results:
+        status = "SUCCESS" if success else "FAILED"
+        print(f"[Block {block_id}] Verification: {status}")
 
 if __name__ == "__main__":
-    validate_integrity()
+    run_validation(blocks)
