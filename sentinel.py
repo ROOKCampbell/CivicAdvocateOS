@@ -1,33 +1,34 @@
-import hashlib
-import time
-from pathlib import Path
+import hashlib, os, time, json
 
-# Point to your manually saved forensic file
-LOCAL_FILE = Path("./current_record.html")
-STORAGE_PATH = Path("./forensic_log")
-HASH_FILE = STORAGE_PATH / "state_anchor.sha512"
+BASELINE_FILE = "/data/data/com.termux/files/home/CivicAdvocate.OS/truth_mandate_baseline.json"
+STRIKE_PACKAGE_DIR = "./strike_packages"
 
-def get_local_hash():
-    return hashlib.sha512(LOCAL_FILE.read_bytes()).hexdigest()
+def get_hash(path):
+    sha512 = hashlib.sha512()
+    with open(path, "rb") as f:
+        while chunk := f.read(65536): sha512.update(chunk)
+    return sha512.hexdigest()
 
-def run_monitor():
-    if not STORAGE_PATH.exists(): STORAGE_PATH.mkdir(parents=True, exist_ok=True)
-    
-    if not LOCAL_FILE.exists():
-        print("[E] Evidence file not found. Place record in the OS directory.")
-        return
+def issue_federal_strike(node_path):
+    if not os.path.exists(STRIKE_PACKAGE_DIR): os.makedirs(STRIKE_PACKAGE_DIR)
+    report = {
+        "event": "INTEGRITY_BREACH",
+        "node": node_path,
+        "status": "PENDING_FEDERAL_REFERRAL",
+        "timestamp": time.ctime()
+    }
+    report_path = f"{STRIKE_PACKAGE_DIR}/strike_{int(time.time())}.json"
+    with open(report_path, "w") as f: json.dump(report, f, indent=4)
+    print(f"Strike Package generated for: {node_path}")
 
-    current_hash = get_local_hash()
-    with open(HASH_FILE, "w") as f: f.write(current_hash)
-    print(f"[*] Local Anchor Secured: {current_hash[:16]}...")
-    
+def run_sentinel():
+    print("Truth Mandate Sentinel: Active")
+    with open(BASELINE_FILE, "r") as f: baseline = json.load(f)
     while True:
+        for path, original_hash in baseline["nodes"].items():
+            if not os.path.exists(path) or get_hash(path) != original_hash:
+                issue_federal_strike(path)
         time.sleep(60)
-        new_hash = get_local_hash()
-        if new_hash != current_hash:
-            print(f"[!] ALERT: Local state change detected.")
-            current_hash = new_hash
-            with open(HASH_FILE, "w") as f: f.write(current_hash)
 
 if __name__ == "__main__":
-    run_monitor()
+    run_sentinel()

@@ -2,7 +2,7 @@ import json
 import os
 
 # Paths defined by mission parameters
-LEDGER_PATH = "/opt/truth_mandate/ledger/mission_ledger.jsonl"
+LEDGER_PATH = "municipal_data/forensic_ledger.json"
 OUTPUT_FILE = os.path.expanduser("~/CivicAdvocate.OS/Direct_Accounting_2026-06-11.txt")
 
 def update_accounting():
