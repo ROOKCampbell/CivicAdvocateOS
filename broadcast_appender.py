@@ -1,29 +1,28 @@
 import json, sys, ecdsa, socket
 from ledger_utils import HashUtility
 
-# 1. Identity Logic
+# 1. ROBUST IDENTITY LOGIC
 def get_keys():
-    try:
-        with open("node.key", "rb") as f:
-            sk = ecdsa.SigningKey.from_string(f.read())
-    except FileNotFoundError:
+    if not os.path.exists("node.key"):
         sk = ecdsa.SigningKey.generate(curve=ecdsa.SECP256k1)
         with open("node.key", "wb") as f:
-            f.write(sk.to_string())
-    return sk
+            f.write(sk.to_pem())
+        return sk
+    else:
+        with open("node.key", "rb") as f:
+            return ecdsa.SigningKey.from_pem(f.read())
 
-# 2. Networking Logic
+# 2. NETWORKING LOGIC
 def broadcast_block(block, peers=["127.0.0.1"]):
     for peer_ip in peers:
         try:
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 s.connect((peer_ip, 5000))
                 s.sendall(json.dumps(block).encode())
-                print(f"[*] BLOCK BROADCASTED TO {peer_ip}")
-        except Exception as e:
-            print(f"[*] PEER {peer_ip} UNAVAILABLE: {e}")
+        except:
+            pass
 
-# 3. Main Logic
+# 3. MAIN LOGIC
 def add_and_broadcast(data):
     sk = get_keys()
     with open("manifest.json", "r") as f:
@@ -47,6 +46,9 @@ def add_and_broadcast(data):
         json.dump(blocks, f, indent=4)
         
     broadcast_block(new_block)
+    print(f"[*] BLOCK {new_block['id']} SIGNED AND BROADCASTED.")
 
 if __name__ == "__main__":
-    add_and_broadcast(sys.argv[1])
+    import os
+    if len(sys.argv) > 1:
+        add_and_broadcast(sys.argv[1])
