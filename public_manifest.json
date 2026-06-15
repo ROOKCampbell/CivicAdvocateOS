@@ -1,0 +1,127 @@
+{
+    "MANIFEST_METADATA": {
+        "kernel": "Truth Mandate Kernel v1.0",
+        "timestamp_utc": "2026-06-15 02:44:00 CDT",
+        "verification_type": "SHA-512 Zero-Knowledge Audit"
+    },
+    "VERIFIED_NODES": {
+        "SEC-01": {
+            "agency": "Securities and Exchange Commission",
+            "jurisdiction": "Securities & Financial Disclosures",
+            "fingerprint": "SHA512_SEC_TRANSPORT_PACKAGE_VERIFIED_20260612",
+            "status": "SEALED"
+        },
+        "DOJ-02": {
+            "agency": "Department of Justice",
+            "jurisdiction": "Criminal & Statutory Review",
+            "fingerprint": "SHA512_DOJ_TRANSPORT_PACKAGE_VERIFIED_20260612",
+            "status": "SEALED"
+        },
+        "FTC-03": {
+            "agency": "Federal Trade Commission",
+            "jurisdiction": "Commercial Deception & Trade Compliance",
+            "fingerprint": "SHA512_FTC_AUTO_GEN_e7908e1a21ce739056c95cb61ec20470",
+            "status": "SEALED"
+        },
+        "DNS-04": {
+            "agency": "Department of National Security",
+            "jurisdiction": "National Security & Infrastructure Protection",
+            "fingerprint": "SHA512_DNS_AUTO_GEN_9e663203ac04b2e84bce44ca3159c36e",
+            "status": "SEALED"
+        },
+        "DOS-05": {
+            "agency": "Department of State",
+            "jurisdiction": "Foreign Affairs & Diplomatic Ledger",
+            "fingerprint": null,
+            "status": "APPENDED"
+        },
+        "TREAS-06": {
+            "agency": "Department of the Treasury",
+            "jurisdiction": "Fiscal Operations & Revenue Enforcement",
+            "fingerprint": null,
+            "status": "APPENDED"
+        },
+        "DOD-07": {
+            "agency": "Department of Defense",
+            "jurisdiction": "Military & Defense Infrastructure",
+            "fingerprint": null,
+            "status": "APPENDED"
+        },
+        "DOI-08": {
+            "agency": "Department of the Interior",
+            "jurisdiction": "Public Lands & Resource Management",
+            "fingerprint": null,
+            "status": "APPENDED"
+        },
+        "USDA-09": {
+            "agency": "Department of Agriculture",
+            "jurisdiction": "Agricultural & Rural Commerce Policy",
+            "fingerprint": null,
+            "status": "APPENDED"
+        },
+        "DOC-10": {
+            "agency": "Department of Commerce",
+            "jurisdiction": "Industrial Metrics & Trade Data",
+            "fingerprint": null,
+            "status": "APPENDED"
+        },
+        "DOL-11": {
+            "agency": "Department of Labor",
+            "jurisdiction": "Labor Standards & Statutory Violations",
+            "fingerprint": null,
+            "status": "APPENDED"
+        },
+        "HHS-12": {
+            "agency": "Department of Health and Human Services",
+            "jurisdiction": "Health Infrastructure Oversight",
+            "fingerprint": null,
+            "status": "APPENDED"
+        },
+        "HUD-13": {
+            "agency": "Department of Housing and Urban Development",
+            "jurisdiction": "Housing Protocols & Community Audits",
+            "fingerprint": null,
+            "status": "APPENDED"
+        },
+        "DOT-14": {
+            "agency": "Department of Transportation",
+            "jurisdiction": "Transit Network & Logistics Safety",
+            "fingerprint": null,
+            "status": "APPENDED"
+        },
+        "DOE-15": {
+            "agency": "Department of Energy",
+            "jurisdiction": "Energy Security & Nuclear Resource Tracking",
+            "fingerprint": null,
+            "status": "APPENDED"
+        },
+        "ED-16": {
+            "agency": "Department of Education",
+            "jurisdiction": "Educational Accountability Systems",
+            "fingerprint": null,
+            "status": "APPENDED"
+        },
+        "VA-17": {
+            "agency": "Department of Veterans Affairs",
+            "jurisdiction": "Veterans Benefits & Health Delivery Systems",
+            "fingerprint": null,
+            "status": "APPENDED"
+        },
+        "DHS-18": {
+            "agency": "Department of Homeland Security",
+            "jurisdiction": "Border Security & Emergency Management",
+            "fingerprint": null,
+            "status": "APPENDED"
+        },
+        "EPA-19": {
+            "agency": "Environmental Protection Agency",
+            "jurisdiction": "Environmental Standard Compliance",
+            "fingerprint": null,
+            "status": "APPENDED"
+        },
+        "LOCAL-FISCAL-01": {
+            "target": "Johnson County Sheriff Office",
+            "notice_status": "CURE_PERIOD_EXPIRED_DEFAULT_ACTIVE"
+        }
+    }
+}

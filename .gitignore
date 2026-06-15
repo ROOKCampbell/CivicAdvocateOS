@@ -1,0 +1,4 @@
+# Ignore volatile system memory but retain tracking structures
+__pycache__/
+*.pyc
+.DS_Store
