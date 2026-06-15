@@ -1,20 +1,21 @@
+import json, datetime
 from ledger_utils import validate_single_block
 from concurrent.futures import ProcessPoolExecutor
 
-# Mock data - Replace this with your file loading logic
-blocks = [
-    {'id': 1, 'data': 'data_chunk_1', 'expected_hash': '...'},
-    {'id': 2, 'data': 'data_chunk_2', 'expected_hash': '...'}
-]
-
-def run_validation(block_list):
-    print("[*] STARTING PARALLEL VALIDATION...")
-    with ProcessPoolExecutor() as executor:
-        results = list(executor.map(validate_single_block, block_list))
+def run_validation():
+    with open("manifest.json", "r") as f:
+        blocks = json.load(f)
     
-    for success, block_id in results:
-        status = "SUCCESS" if success else "FAILED"
-        print(f"[Block {block_id}] Verification: {status}")
+    # Simple loop for validation to maintain chain order
+    last_hash = "0" * 128
+    for block in blocks:
+        success, b_id = validate_single_block(block, last_hash)
+        if not success:
+            print(f"[!] CHAIN BROKEN AT BLOCK {b_id}!")
+            return
+        last_hash = block['expected_hash']
+        
+    print("[*] FULL CHAIN INTEGRITY VERIFIED.")
 
 if __name__ == "__main__":
-    run_validation(blocks)
+    run_validation()
