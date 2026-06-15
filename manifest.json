@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "data": "Genesis Block",
+        "prev_hash": "0",
+        "expected_hash": "0"
+    },
+    {
+        "id": 2,
+        "type": "NO ONE LEFT BEHIND",
+        "data": "Your Rule",
+        "prev_hash": "0",
+        "pub_key": "7c0679a7c3c14d3e0ef107c31a1579ce12727c46a0fbed75a3bc48c1b45b35439610f53b7c9c3ef72fe8f4a443230587844f4cec2d710888cfda2b76dd80ab3d",
+        "signature": "a815d86d617d2832e244d800172116a8a995ba77f1e3e85a917284d9e1d1a5bd18bb2dab7c16e44034458bfc8a0b5d1c4579b3624eb89e9e673b0858bf76ebaa"
+    }
+]

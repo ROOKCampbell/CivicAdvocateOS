@@ -1,0 +1,13 @@
+:
+    """Handles SHA-512 operations efficiently."""
+    @staticmethod
+    def calculate_hash(block_data):
+        return hashlib.sha512(block_data.encode()).hexdigest()
+
+def validate_single_block(block):
+    """Worker function for parallel processing."""
+    # Logic assumes block is a dict with 'id' and 'data'
+    expected = block.get('expected_hash')
+    actual = HashUtility.calculate_hash(block['data'])
+    return actual == expected, block['id']	
+

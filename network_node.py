@@ -1,20 +1,18 @@
-import socket, json
+import socket
 
-def start_server(port=5000):
-    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.bind(('0.0.0.0', port))
-    server.listen(5)
-    print(f"[*] Node listening on port {port}...")
-    
-    while True:
-        conn, addr = server.accept()
-        request = conn.recv(1024).decode()
-        if request == 'SYNC_REQUEST':
-            with open("manifest.json", "r") as f:
-                data = f.read()
-            conn.sendall(data.encode())
-            print(f"[*] Sent ledger to {addr}")
-        conn.close()
+# Configuration for Public Binding
+HOST = '0.0.0.0'
+PORT = 5000
 
-if __name__ == "__main__":
-    start_server()
+# Initialize Socket
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+server.bind((HOST, PORT))
+server.listen(5)
+
+print(f"[*] Node active and listening on {HOST}:{PORT}...")
+
+while True:
+    conn, addr = server.accept()
+    print(f"[+] Connection received from {addr}")
+    conn.close()

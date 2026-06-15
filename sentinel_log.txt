@@ -1,0 +1,5 @@
+nohup: ignoring input
+  File "/data/data/com.termux/files/home/CivicAdvocate.OS/sentinel.py", line 7
+    TARGET_URL = "# Updated Configuration
+                 ^
+SyntaxError: unterminated string literal (detected at line 7)

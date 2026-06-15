@@ -1,0 +1,6 @@
+{
+  "target_district": "[INSERT_DISTRICT_NAME]",
+  "fiscal_year_audit_file": "path_to_audit.pdf",
+  "procurement_ledger_path": "path_to_ledger.csv",
+  "anomaly_threshold": 0.05
+}
