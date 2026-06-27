@@ -1,7 +1,8 @@
 import hashlib
 import os
-import random
 from datetime import datetime, timezone
+import urllib.request
+import sys
 
 def generate_sha512(file_path):
     BUF_SIZE = 65536
@@ -21,37 +22,47 @@ def anchor_asset(target_file, ledger_file='forensic_ledger.sha512'):
     file_hash = generate_sha512(target_file)
     if not file_hash:
         return False
-    
     timestamp = datetime.now(timezone.utc).isoformat()
     ledger_entry = f"{timestamp} | {target_file} | {file_hash}\n"
-    
+
     with open(ledger_file, 'a') as f:
         f.write(ledger_entry)
     return file_hash
 
-def run_rrc_scraper():
-    print("--- Executing Texas RRC Data Ingestion Loop ---")
-    
-    # Simulating data payload from Texas RRC GIS/Production data systems
-    mock_rrc_data = f"""# Texas Railroad Commission Production Data Log
-# Target Region: Cleburne, TX (Johnson County)
-# Retrieval Timestamp: {datetime.now(timezone.utc).isoformat()}
----------------------------------------------------------
-Operator_ID | API_Number   | Production_Volume_MCF | Status
-RRC_94821   | 42-251-34211 | {random.randint(1200, 5000)}                  | ACTIVE
-RRC_10482   | 42-251-98432 | 0                     | PLUGGED
-"""
-    
+def fetch_live_rrc_data(source_url=None, local_file=None):
+    print("--- Executing Live Texas RRC Data Ingestion ---")
     output_file = "rrc_cleburne_production.log"
     
-    # Write the ingested data to disk
-    with open(output_file, 'w') as f:
-        f.write(mock_rrc_data)
+    if local_file and os.path.exists(local_file):
+        print(f"[INGEST] Processing local truth ledger: {local_file}")
+        with open(local_file, 'r') as infile, open(output_file, 'w') as outfile:
+            outfile.write(f"# Texas RRC Production Log - Local Source: {local_file}\n")
+            outfile.write(infile.read())
+            
+    elif source_url:
+        print(f"[INGEST] Fetching live data from: {source_url}")
+        try:
+            req = urllib.request.Request(source_url, headers={'User-Agent': 'CivicAdvocate.OS/1.0'})
+            with urllib.request.urlopen(req) as response, open(output_file, 'wb') as outfile:
+                outfile.write(response.read())
+        except Exception as e:
+            print(f"[ERROR] Live fetch failed: {e}")
+            return
+    else:
+        print("[ERROR] No valid data source provided. Aborting ingestion.")
+        return
+
     print(f"[SUCCESS] Ingested raw RRC data written to: {output_file}")
     
-    # Cryptographically secure the newly ingested file immediately
     inserted_hash = anchor_asset(output_file)
-    print(f"[ANCHORED] Automatically generated forensic seal: {inserted_hash[:16]}...")
+    print(f"[ANCHORED] Forensic seal generated: {inserted_hash[:16]}...")
 
 if __name__ == "__main__":
-    run_rrc_scraper()
+    if len(sys.argv) > 1:
+        arg = sys.argv[1]
+        if arg.startswith("http"):
+            fetch_live_rrc_data(source_url=arg)
+        else:
+            fetch_live_rrc_data(local_file=arg)
+    else:
+        print("Usage: python3 rrc_scraper.py <url_or_local_file>")
