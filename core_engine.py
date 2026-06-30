@@ -15,6 +15,5 @@ class ComplianceEngine:
             print(f"Log file not found: {self.log_file}")
 
 if __name__ == "__main__":
-    # Initialize with current directory for testing
     engine = ComplianceEngine(".")
     engine.run_monitor()
