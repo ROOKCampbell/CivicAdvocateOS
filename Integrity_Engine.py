@@ -1,25 +1,21 @@
-import hashlib
-import os
+import yaml
+import sys
+import logging
 
-def generate_ledger(directory, ledger_file):
-    print(f'[*] Calibrating directory: {directory}')
-    with open(ledger_file, 'w') as f:
-        for root, dirs, files in os.walk(directory):
-            for name in files:
-                if name in [ledger_file, 'Integrity_Engine.py', 'watchdog_log.txt']:
-                    continue
-                
-                filepath = os.path.join(root, name)
-                sha512 = hashlib.sha512()
-                try:
-                    with open(filepath, 'rb') as file_to_hash:
-                        while chunk := file_to_hash.read(8192):
-                            sha512.update(chunk)
-                    f.write(f'{sha512.hexdigest()}  {filepath}\n')
-                except Exception as e:
-                    print(f'[!] Could not hash {filepath}: {e}')
+def load_config(config_path='config.yaml'):
+    try:
+        with open(config_path, 'r') as file:
+            config = yaml.safe_load(file)
+            return config
+    except FileNotFoundError:
+        logging.error(f"Configuration file {config_path} not found.")
+        sys.exit(1)
 
-    print(f'[+] Calibration complete. Ledger saved to: {ledger_file}')
+def initialize_engine():
+    mandate = load_config()
+    primary_key = mandate['lineage_anchor']['primary_key']
+    print(f"[*] Integrity Engine initialized. Lineage root: {primary_key}")
+    return mandate
 
-if __name__ == '__main__':
-    generate_ledger('.', 'integrity.ledger')
+if __name__ == "__main__":
+    current_mandate = initialize_engine()
