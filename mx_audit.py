@@ -21,7 +21,7 @@ def audit_mx_fqdn_forensic(domain_name):
         ledger_hash = hashlib.sha512(audit_log.encode()).hexdigest()
         print(f"\n[Cryptographic Hash (SHA-512) - Ledger Secured]\n{ledger_hash}")
             
-    except dns.resolver.NoAnswer:
+	
         print(f"[!] No MX records found for {domain_name}. Data dropped.")
     except dns.resolver.NXDOMAIN:
         print(f"[!] The FQDN {domain_name} does not exist. Data dropped.")
