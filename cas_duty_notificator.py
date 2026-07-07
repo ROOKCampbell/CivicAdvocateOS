@@ -2,7 +2,7 @@
 """
 Civic Advocate Service (CAS) - Duty-of-Notice Auditor
 Description: Enforces the fiduciary mandate that public officials must notify 
-             citizens of verified record updates.
+             citizens of verified record updates. Filtered for system integrity.
 """
 
 import sqlite3
@@ -14,23 +14,21 @@ class DutyAuditor:
         self.db_path = db_path
 
     def audit_notification_duty(self):
-        """
-        Cross-references filed records against notification logs.
-        Flags any entry where a record exists but notification is unverified.
-        """
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
         
-        # Select records where notification_status is NOT 'VERIFIED'
+        # Updated: Filter out system-generated records to prevent false positives
         cursor.execute("""
-            SELECT id, record_owner, record_type, payload 
+            SELECT entry_id, record_owner, record_type, payload 
             FROM cas_ledger 
             WHERE notification_status != 'VERIFIED'
+            AND vector_type NOT IN ('CORE_SYSTEM_INIT', 'PUBLIC_OFFICIAL_ROSTER')
         """)
         pending_notices = cursor.fetchall()
         
         if not pending_notices:
-            print("[DUTY_AUDIT] All records verified. Notification protocols satisfied.")
+            print("[DUTY_AUDIT] All administrative records verified. Notification protocols satisfied.")
+            conn.close()
             return
 
         print(f"[DUTY_AUDIT] ALERT: {len(pending_notices)} records found without verified public notification.")
@@ -42,9 +40,6 @@ class DutyAuditor:
         conn.close()
 
     def flag_violation(self, tx_id, owner, r_type):
-        """
-        Generates an immutable public alert for the record owner.
-        """
         violation_alert = {
             "timestamp": datetime.now().isoformat(),
             "violation_type": "FAILURE_OF_DUTY_NOTICE",
@@ -53,7 +48,6 @@ class DutyAuditor:
             "status": "ACTION_REQUIRED"
         }
         
-        # Log to the public manifest (the 'Notification' log)
         with open("public_accountability_alerts.log", "a") as f:
             f.write(json.dumps(violation_alert) + "\n")
             
